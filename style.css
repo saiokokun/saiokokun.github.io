@@ -32,9 +32,8 @@ body {
     font-family: 'Comic Sans MS', cursive, sans-serif;
     position: relative;
     font-size: 3.5rem;
-    color: #0ff;
-    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-    animation: glitch 1.5s infinite alternate;
+    color: #ff69b4;
+    text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
     margin-bottom: 20px;
 }
 
@@ -122,4 +121,36 @@ body {
 
 .neon-btn:hover::after {
     content: " 🐾";
+}
+
+.random-facts {
+    margin: 30px auto;
+    max-width: 600px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #ff69b4;
+}
+
+.random-facts p {
+    margin: 15px 0;
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px #ff69b4;
+}
+
+.chaos-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.bottom-text {
+    margin-top: 40px;
+    font-size: 1.1rem;
+    color: #ff69b4;
+    text-shadow: 0 0 5px #ff69b4;
+}
+
+.bottom-text p {
+    margin: 10px 0;
 }
