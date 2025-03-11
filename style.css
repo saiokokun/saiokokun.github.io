@@ -7,16 +7,23 @@ body {
     color: #0ff;
     font-family: 'Orbitron', sans-serif;
     text-align: center;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ensure full height */
 }
 
+/* Add top margin to push everything down */
 .container {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    margin-top: 80px; /* Adjust for proper spacing */
 }
 
-/* Profile Picture */
+/* Profile Picture Styling */
+.profile {
+    margin-bottom: 20px; /* Spacing between profile and cube */
+}
+
 .profile img {
     width: 120px;
     height: 120px;
@@ -25,6 +32,7 @@ body {
     animation: glow-pulse 2s infinite alternate;
 }
 
+/* Glowing effect for the profile picture */
 @keyframes glow-pulse {
     0% { box-shadow: 0 0 10px #0ff; }
     100% { box-shadow: 0 0 30px #00ffff; }
@@ -36,6 +44,7 @@ body {
     font-size: 2.5rem;
     text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00ffff;
     animation: glitch 1.5s infinite alternate;
+    margin-bottom: 30px; /* Added spacing */
 }
 
 .glitch::before, .glitch::after {
@@ -58,17 +67,14 @@ body {
     clip-path: inset(40% 0 10% 0);
 }
 
-@keyframes glitch {
-    0% { transform: skew(2deg); }
-    100% { transform: skew(-2deg); }
-}
-
 /* Cube Styles */
 .cube-container {
     perspective: 600px;
     display: flex;
     justify-content: center;
-    margin: 40px auto;
+    align-items: center;
+    height: 150px; /* Fixed height */
+    margin-bottom: 40px; /* More space below the cube */
 }
 
 .cube {
@@ -105,6 +111,12 @@ body {
 }
 
 /* Cyber Buttons */
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+}
+
 .neon-btn {
     display: inline-block;
     margin: 10px;
