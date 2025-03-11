@@ -7,7 +7,7 @@ body {
     color: #0ff;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     text-align: center;
-    overflow: hidden;
+   
     background-image: linear-gradient(rgba(13, 13, 13, 0.97), rgba(13, 13, 13, 0.97)), 
                       url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z' fill='%230ff' fill-opacity='0.05'/%3E%3C/svg%3E");
 }
@@ -110,7 +110,7 @@ body {
     transition: 0.3s ease-in-out;
     box-shadow: 0 0 10px #0ff;
     position: relative;
-    overflow: hidden;
+    
     border-radius: 5px;
 }
 
@@ -199,28 +199,44 @@ body {
     }
 }
 
-/* Add confetti styling */
+/* MOAR CONFETTI STYLING!!!! */
 .confetti {
     position: fixed;
-    top: -10px;
+    top: -20px;
     width: 10px;
     height: 10px;
     image-rendering: pixelated;
     animation: fall 3s linear forwards;
     z-index: 1000;
+    opacity: 0.8;
 }
 
 @keyframes fall {
     0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translateY(25vh) rotate(180deg) scale(1.1) translateX(20px);
+    }
+    50% {
+        transform: translateY(50vh) rotate(360deg) scale(1) translateX(-20px);
+    }
+    75% {
+        transform: translateY(75vh) rotate(540deg) scale(0.9) translateX(20px);
     }
     100% {
-        transform: translateY(100vh) rotate(720deg);
+        transform: translateY(100vh) rotate(720deg) scale(0.8) translateX(-20px);
     }
 }
 
-/* Make sure other content stays above confetti */
+/* Make sure the container stays above the confetti chaos */
 .container {
     position: relative;
     z-index: 1001;
+    pointer-events: auto;
+}
+
+/* Optional: Add a subtle glow to confetti */
+.confetti {
+    box-shadow: 0 0 5px currentColor;
 }

@@ -1,38 +1,80 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let cube = document.querySelector(".cube");
-    let isRotating = true;
+    // Set initial random hue
+    const initialHue = Math.random() * 360;
+    document.documentElement.style.setProperty('--base-hue', initialHue);
 
-    cube.addEventListener("mouseover", function () {
-        isRotating = false;
-        cube.style.animation = "none";
-    });
+    // Cycle hue
+    let hue = initialHue;
+    setInterval(() => {
+        hue = (hue + 1) % 360;
+        document.documentElement.style.setProperty('--base-hue', hue);
+    }, 100);
 
-    cube.addEventListener("mouseleave", function () {
-        isRotating = true;
-        cube.style.animation = "rotate 6s infinite linear";
-    });
+    // MOAR CONFETTI!!!! Create multiple confetti streams
+    setInterval(createConfetti, 20); // Every 20ms
+    setInterval(() => createConfetti(true), 20); // Second stream
+    setInterval(() => createConfetti(false), 20); // Third stream
 
-    
-    // Flag to ensure we only play once
+    // Play audio on ANY interaction
     let hasPlayed = false;
-
-    // Play audio on first scroll
-    window.addEventListener('scroll', () => {
+    const playAudio = () => {
         if (!hasPlayed) {
-            audio.play().catch(e => console.log("Audio playback failed:", e));
-            hasPlayed = true;
+            audio.play().then(() => {
+                hasPlayed = true;
+                console.log("🎵 Music started!");
+            }).catch(e => console.log("Audio playback failed:", e));
         }
-    }, { once: true }); // Remove listener after first trigger
+    };
 
-    // Create low-res confetti
-    setInterval(createConfetti, 100); // Create confetti every 100ms
+    // Listen for ANY interaction
+    ['click', 'touchstart', 'scroll', 'keypress', 'mousemove'].forEach(event => {
+        document.addEventListener(event, playAudio, { once: true });
+    });
+
+    // Existing cube code
+    let cube = document.querySelector(".cube");
+    if (cube) {
+        let isRotating = true;
+        cube.addEventListener("mouseover", function () {
+            isRotating = false;
+            cube.style.animation = "none";
+        });
+        cube.addEventListener("mouseleave", function () {
+            isRotating = true;
+            cube.style.animation = "rotate 6s infinite linear";
+        });
+    }
 });
 
-function createConfetti() {
+function createConfetti(isReverse = false) {
     const confetti = document.createElement('div');
     confetti.className = 'confetti';
-    confetti.style.left = Math.random() * 100 + 'vw';
-    confetti.style.backgroundColor = ['#ff0', '#f0f', '#0ff', '#f00'][Math.floor(Math.random() * 4)];
+    
+    // Random size for each confetti
+    const size = Math.random() * 15 + 5; // 5-20px
+    confetti.style.width = `${size}px`;
+    confetti.style.height = `${size}px`;
+    
+    // Random starting position
+    confetti.style.left = `${Math.random() * 100}vw`;
+    
+    // More color variations
+    const colors = [
+        '#ff0', '#f0f', '#0ff', '#f00', '#0f0', '#00f',
+        '#ff69b4', '#7fffd4', '#ff4500', '#9400d3'
+    ];
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    // Random rotation
+    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+    
+    // Different shapes
+    if (Math.random() > 0.5) {
+        confetti.style.borderRadius = '50%';
+    } else if (Math.random() > 0.5) {
+        confetti.style.borderRadius = '30% 70% 70% 30% / 30% 30% 70% 70%';
+    }
+
     document.body.appendChild(confetti);
 
     // Remove confetti after animation
