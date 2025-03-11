@@ -18,15 +18,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // Play audio on ANY interaction
     let hasPlayed = false;
     const playAudio = () => {
-        if (!hasPlayed) {
-            audio.play().then(() => {
-                hasPlayed = true;
-                console.log("🎵 Music started!");
-            }).catch(e => console.log("Audio playback failed:", e));
-        }
+        // Remove this automatic audio play functionality
+        // if (!hasPlayed) {
+        //     audio.play().then(() => {
+        //         hasPlayed = true;
+        //         console.log("🎵 Music started!");
+        //     }).catch(e => console.log("Audio playback failed:", e));
+        // }
     };
 
-    // Listen for ANY interaction
+    // Listen for ANY interaction - keep these but they won't auto-play audio now
     ['click', 'touchstart', 'scroll', 'keypress', 'mousemove'].forEach(event => {
         document.addEventListener(event, playAudio, { once: true });
     });
@@ -152,7 +153,7 @@ garbgleText.addEventListener('mouseleave', () => {
 const audio = new Audio('https://www.nyan.cat/music/paddy.mp3');
 audio.loop = true;
 
-// Replace the old audio interaction code with this new button handler
+// Make sure the cat music button is the ONLY way to play the audio
 const catMusicBtn = document.querySelector('.cat-music-btn');
 if (catMusicBtn) {
     catMusicBtn.addEventListener('click', () => {
@@ -161,6 +162,8 @@ if (catMusicBtn) {
                 .then(() => {
                     catMusicBtn.classList.add('playing');
                     catMusicBtn.querySelector('.music-text').textContent = 'Nyaning!';
+                    hasPlayed = true; // Mark as played when button is clicked
+                    console.log("🎵 Music started!");
                 })
                 .catch(e => console.log("Audio playback failed:", e));
         } else {
