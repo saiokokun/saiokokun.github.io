@@ -146,29 +146,6 @@ garbgleText.addEventListener('mouseleave', () => {
     garbgleText.style.animation = '';
 });
 
-// Add audio player
-const audio = new Audio('paddy.mp3');
-audio.loop = true;
-
-// Make sure the cat music button is the ONLY way to play the audio
-const catMusicBtn = document.querySelector('.cat-music-btn');
-if (catMusicBtn) {
-    catMusicBtn.addEventListener('click', () => {
-        if (audio.paused) {
-            audio.play()
-                .then(() => {
-                    catMusicBtn.classList.add('playing');
-                    catMusicBtn.querySelector('.music-text').textContent = 'Nyaning!';
-                })
-                .catch(e => console.log("Audio playback failed:", e));
-        } else {
-            audio.pause();
-            catMusicBtn.classList.remove('playing');
-            catMusicBtn.querySelector('.music-text').textContent = 'Play Nyan!';
-        }
-    });
-}
-
 // BRAINROT JS MADNESS
 // setInterval(() => {
 //     document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
@@ -563,22 +540,21 @@ request.onerror = function(event) {
   console.error('UselessDB error:', event.target.error);
 };
 
-// CURSED RAINBOW TRAIL THAT FOLLOWS YOUR CURSOR
+// Fix the cursor trail
 document.addEventListener('mousemove', (e) => {
     const trail = document.createElement('div');
     trail.className = 'cursor-trail';
     trail.style.cssText = `
         position: fixed;
-        width: ${Math.random() * 50 + 10}px;
-        height: ${Math.random() * 50 + 10}px;
+        width: ${Math.random() * 20 + 5}px;
+        height: ${Math.random() * 20 + 5}px;
         left: ${e.clientX}px;
         top: ${e.clientY}px;
         background: hsl(${Math.random() * 360}, 100%, 50%);
-        border-radius: ${Math.random() > 0.5 ? '50%' : '0%'};
+        border-radius: 50%;
         pointer-events: none;
         z-index: 9999;
-        mix-blend-mode: difference;
-        transform: rotate(${Math.random() * 360}deg);
+        mix-blend-mode: screen;
         opacity: 0.7;
     `;
     document.body.appendChild(trail);
@@ -591,7 +567,7 @@ document.addEventListener('mousemove', (e) => {
     function animate() {
         moveY -= 0.1;
         opacity -= 0.01;
-        trail.style.transform += 'rotate(5deg)';
+        trail.style.transform = `rotate(${Math.random() * 360}deg)`;
         trail.style.left = `${parseFloat(trail.style.left) + moveX}px`;
         trail.style.top = `${parseFloat(trail.style.top) + moveY}px`;
         trail.style.opacity = opacity;

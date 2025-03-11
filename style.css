@@ -264,12 +264,13 @@ body {
 
 /* Random Audio Section */
 .random-audio {
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 .random-audio audio {
-    filter: hue-rotate(var(--base-hue));
-    opacity: 0.8;
+    background: #ff69b4;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 /* Random Text Section */
@@ -441,51 +442,6 @@ body {
 
 /* Override any spinning animations */
 *, *::before, *::after {
-    animation: none !important;
-}
-
-/* Cat Music Button - Simple Square Style */
-.cat-music-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 5px 10px;
-    background: #ff69b4;
-    border: none;
-    border-radius: 3px;
-    color: white;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    margin: 20px 0;
-}
-
-.cat-music-btn:hover {
-    transform: scale(1.05);
-}
-
-.cat-music-btn .cat-emoji {
-    font-size: 1.2em;
-}
-
-.cat-music-btn.playing {
-    background: #ff1493;
-}
-
-/* Keep only specific wanted animations */
-.cube {
-    animation: rotate 6s infinite linear !important;
-}
-
-/* Remove the rainbow-bg animation from playing state */
-.cat-music-btn.playing {
-    background: #ff1493 !important;
-    animation: none !important;
-}
-
-/* Remove any bounce animations */
-.cat-music-btn .cat-emoji {
     animation: none !important;
 }
 
@@ -789,8 +745,6 @@ div:nth-child(odd):hover > p:not(:first-child)::first-letter,
 .cursor-trail {
     position: fixed;
     pointer-events: none;
-    width: 10px;
-    height: 10px;
     border-radius: 50%;
     mix-blend-mode: screen;
     z-index: 9999;
