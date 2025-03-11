@@ -567,3 +567,133 @@ request.onsuccess = function(event) {
 request.onerror = function(event) {
   console.error('UselessDB error:', event.target.error);
 };
+
+// CURSED RAINBOW TRAIL THAT FOLLOWS YOUR CURSOR
+document.addEventListener('mousemove', (e) => {
+    const trail = document.createElement('div');
+    trail.className = 'cursor-trail';
+    trail.style.cssText = `
+        position: fixed;
+        width: ${Math.random() * 50 + 10}px;
+        height: ${Math.random() * 50 + 10}px;
+        left: ${e.clientX}px;
+        top: ${e.clientY}px;
+        background: hsl(${Math.random() * 360}, 100%, 50%);
+        border-radius: ${Math.random() > 0.5 ? '50%' : '0%'};
+        pointer-events: none;
+        z-index: 9999;
+        mix-blend-mode: difference;
+        transform: rotate(${Math.random() * 360}deg);
+        opacity: 0.7;
+    `;
+    document.body.appendChild(trail);
+    
+    // Make it float away and disappear
+    let moveX = (Math.random() - 0.5) * 10;
+    let moveY = -Math.random() * 5 - 2;
+    let opacity = 0.7;
+    
+    function animate() {
+        moveY -= 0.1;
+        opacity -= 0.01;
+        trail.style.transform += 'rotate(5deg)';
+        trail.style.left = `${parseFloat(trail.style.left) + moveX}px`;
+        trail.style.top = `${parseFloat(trail.style.top) + moveY}px`;
+        trail.style.opacity = opacity;
+        
+        if (opacity > 0) {
+            requestAnimationFrame(animate);
+        } else {
+            trail.remove();
+        }
+    }
+    
+    requestAnimationFrame(animate);
+});
+
+// COMIC SANS EVERYTHING BUTTON
+const comicSansBtn = document.createElement('button');
+comicSansBtn.textContent = 'COMIC SANS EVERYTHING';
+comicSansBtn.style.position = 'fixed';
+comicSansBtn.style.right = '20px';
+comicSansBtn.style.top = '20px';
+comicSansBtn.style.zIndex = '99999';
+document.body.appendChild(comicSansBtn);
+
+comicSansBtn.addEventListener('click', () => {
+    document.body.style.fontFamily = '"Comic Sans MS", cursive';
+    alert('EMBRACE THE COMIC SANS');
+    // Make it rain Comic Sans text
+    for (let i = 0; i < 100; i++) {
+        setTimeout(() => {
+            const text = document.createElement('div');
+            text.textContent = 'Comic Sans!';
+            text.style.cssText = `
+                position: fixed;
+                left: ${Math.random() * 100}vw;
+                top: -50px;
+                color: hsl(${Math.random() * 360}, 100%, 50%);
+                font-family: "Comic Sans MS", cursive;
+                font-size: ${Math.random() * 30 + 20}px;
+                pointer-events: none;
+                animation: fall 3s linear;
+            `;
+            document.body.appendChild(text);
+            setTimeout(() => text.remove(), 3000);
+        }, i * 50);
+    }
+});
+
+// GRAVITY CHAOS
+let gravityReversed = false;
+setInterval(() => {
+    if (Math.random() < 0.01) { // 1% chance every interval
+        gravityReversed = !gravityReversed;
+        document.body.style.transform = gravityReversed ? 'rotate(180deg)' : 'rotate(0deg)';
+        document.body.style.transition = 'transform 2s';
+        alert(gravityReversed ? 'GRAVITY REVERSED!' : 'GRAVITY RESTORED!');
+    }
+}, 1000);
+
+// PARTY MODE
+const partyMode = () => {
+    document.body.style.animation = 'party 0.1s infinite';
+    const audio = new Audio('https://www.myinstants.com/media/sounds/epic-sax-guy-loop.mp3');
+    audio.loop = true;
+    audio.play();
+    
+    // Create a disco ball
+    const discoBall = document.createElement('div');
+    discoBall.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle at 30% 30%, white, #888);
+        border-radius: 50%;
+        box-shadow: 0 0 50px rgba(255,255,255,0.8);
+        z-index: 99999;
+        animation: spin 2s linear infinite;
+    `;
+    document.body.appendChild(discoBall);
+};
+
+// Add party mode keyboard shortcut
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'p' && e.ctrlKey && e.shiftKey) {
+        partyMode();
+    }
+});
+
+// CURSED IMAGE REPLACER
+setInterval(() => {
+    if (Math.random() < 0.1) { // 10% chance
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.src = 'https://media.giphy.com/media/nDSlfqf0gn5g4/giphy.gif';
+            img.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
+        });
+    }
+}, 5000);
