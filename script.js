@@ -44,43 +44,87 @@ document.addEventListener("DOMContentLoaded", function () {
             cube.style.animation = "rotate 6s infinite linear";
         });
     }
+
+    // Random button chaos
+    const randomBtn = document.querySelector('.random-btn');
+    if (randomBtn) {
+        randomBtn.addEventListener('click', () => {
+            // Create extra confetti burst on click
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => createConfetti(), i * 20);
+            }
+            // Random rotation on click
+            randomBtn.style.transform = `rotate(${Math.random() * 360}deg)`;
+        });
+    }
+
+    // Random images hover effect
+    const randomImages = document.querySelectorAll('.random-images img');
+    randomImages.forEach(img => {
+        img.addEventListener('mouseover', () => {
+            img.style.transform = `scale(1.1) rotate(${Math.random() * 20 - 10}deg)`;
+        });
+        img.addEventListener('mouseleave', () => {
+            img.style.transform = 'scale(1) rotate(0deg)';
+        });
+    });
+
+    // Random link chaos
+    const randomLink = document.querySelector('.random-link a');
+    if (randomLink) {
+        randomLink.addEventListener('mouseover', () => {
+            randomLink.textContent = ['OwO', 'UwU', '>w<', ':3', '(｡♥‿♥｡)'][Math.floor(Math.random() * 5)];
+        });
+        randomLink.addEventListener('mouseleave', () => {
+            randomLink.textContent = 'Click here for absolutely no reason';
+        });
+    }
+
+    // Random quote animation
+    const quote = document.querySelector('.random-quote blockquote');
+    if (quote) {
+        quote.addEventListener('click', () => {
+            quote.style.animation = 'glitch 0.3s infinite';
+            setTimeout(() => quote.style.animation = '', 1000);
+        });
+    }
+
+    // Even more confetti streams
+    setInterval(createConfetti, 10); // Every 10ms
+    setInterval(() => createConfetti(true), 10); // Second stream
+    setInterval(() => createConfetti(false), 10); // Third stream
+    setInterval(() => createConfetti(true), 10); // Fourth stream
+    setInterval(() => createConfetti(false), 10); // Fifth stream
 });
 
 function createConfetti(isReverse = false) {
     const confetti = document.createElement('div');
     confetti.className = 'confetti';
     
-    // Random size for each confetti
-    const size = Math.random() * 15 + 5; // 5-20px
+    // Bigger size range
+    const size = Math.random() * 20 + 5; // 5-25px
     confetti.style.width = `${size}px`;
     confetti.style.height = `${size}px`;
     
-    // Random starting position
-    confetti.style.left = `${Math.random() * 100}vw`;
+    // Random starting position with more spread
+    confetti.style.left = `${Math.random() * 120 - 10}vw`;
     
     // More color variations
     const colors = [
         '#ff0', '#f0f', '#0ff', '#f00', '#0f0', '#00f',
-        '#ff69b4', '#7fffd4', '#ff4500', '#9400d3'
+        '#ff69b4', '#7fffd4', '#ff4500', '#9400d3',
+        '#ffd700', '#fa8072', '#00fa9a', '#ff1493'
     ];
     confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
     
-    // Random rotation
-    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+    // More random shapes
+    const shapes = ['50%', '0%', '30% 70% 70% 30% / 30% 30% 70% 70%', '20% 80% 80% 20% / 20% 20% 80% 80%'];
+    confetti.style.borderRadius = shapes[Math.floor(Math.random() * shapes.length)];
     
-    // Different shapes
-    if (Math.random() > 0.5) {
-        confetti.style.borderRadius = '50%';
-    } else if (Math.random() > 0.5) {
-        confetti.style.borderRadius = '30% 70% 70% 30% / 30% 30% 70% 70%';
-    }
-
     document.body.appendChild(confetti);
-
+    
     // Remove confetti after animation
-    setTimeout(() => {
-        confetti.remove();
-    }, 3000);
+    setTimeout(() => confetti.remove(), 3000);
 }
 
 // Garbgle functionality
