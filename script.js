@@ -93,6 +93,144 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(() => createConfetti(false), 10); // Third stream
     setInterval(() => createConfetti(true), 10); // Fourth stream
     setInterval(() => createConfetti(false), 10); // Fifth stream
+
+    // Add fairy dust cursor effect
+    function fairyDustCursor() {
+        const possibleColors = ["#D61C59", "#E7D84B", "#1B8798", "#FF00FF", "#00FFFF"];
+        let particles = [];
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let cursor = { x: width / 2, y: height / 2 };
+        let canvas, context;
+
+        function init() {
+            canvas = document.createElement("canvas");
+            context = canvas.getContext("2d");
+            canvas.style.position = "fixed";
+            canvas.style.top = "0";
+            canvas.style.left = "0";
+            canvas.style.pointerEvents = "none";
+            canvas.style.zIndex = "999999";
+            document.body.appendChild(canvas);
+            canvas.width = width;
+            canvas.height = height;
+
+            document.addEventListener("mousemove", function(e) {
+                cursor.x = e.clientX;
+                cursor.y = e.clientY;
+                addParticle(cursor.x, cursor.y, possibleColors[Math.floor(Math.random() * possibleColors.length)]);
+            });
+
+            document.addEventListener("touchmove", function(e) {
+                if (e.touches.length > 0) {
+                    cursor.x = e.touches[0].clientX;
+                    cursor.y = e.touches[0].clientY;
+                    addParticle(cursor.x, cursor.y, possibleColors[Math.floor(Math.random() * possibleColors.length)]);
+                }
+            });
+
+            window.addEventListener("resize", function() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            });
+
+            animate();
+        }
+
+        function addParticle(x, y, color) {
+            particles.push({
+                x: x,
+                y: y,
+                color: color,
+                size: Math.random() * 15 + 5,
+                speedX: Math.random() * 3 - 1.5,
+                speedY: Math.random() * 3 - 1.5,
+                life: 30 + Math.random() * 20
+            });
+        }
+
+        function animate() {
+            context.clearRect(0, 0, width, height);
+
+            // Update and draw particles
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].x += particles[i].speedX;
+                particles[i].y += particles[i].speedY;
+                particles[i].size *= 0.95;
+                particles[i].life--;
+
+                if (particles[i].life <= 0 || particles[i].size <= 0.5) {
+                    particles.splice(i, 1);
+                    i--;
+                    continue;
+                }
+
+                context.fillStyle = particles[i].color;
+                context.beginPath();
+                context.arc(particles[i].x, particles[i].y, particles[i].size, 0, Math.PI * 2);
+                context.closePath();
+                context.fill();
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        init();
+
+        // Return destroy function
+        return {
+            destroy: function() {
+                canvas.remove();
+            }
+        };
+    }
+
+    // Initialize fairy dust cursor
+    const fairyDust = fairyDustCursor();
+
+    // Add Helix audio element
+    const randomAudio = document.querySelector('.random-audio');
+    if (!randomAudio) {
+        const audioDiv = document.createElement('div');
+        audioDiv.className = 'random-audio';
+        audioDiv.innerHTML = `
+            <audio controls>
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        `;
+        
+        // Insert after the chaos-links div
+        const chaosLinks = document.querySelector('.chaos-links');
+        if (chaosLinks) {
+            chaosLinks.parentNode.insertBefore(audioDiv, chaosLinks.nextSibling);
+        } else {
+            document.body.appendChild(audioDiv);
+        }
+    }
+
+    // Add Nyan Cat audio
+    const nyanAudio = document.querySelector('.nyan-audio');
+    if (!nyanAudio) {
+        const nyanDiv = document.createElement('div');
+        nyanDiv.className = 'nyan-audio';
+        nyanDiv.innerHTML = `
+            <audio controls>
+                <source src="https://www.nyan.cat/music/paddy.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        `;
+        
+        // Insert after the random-audio div
+        const randomAudioDiv = document.querySelector('.random-audio');
+        if (randomAudioDiv) {
+            randomAudioDiv.parentNode.insertBefore(nyanDiv, randomAudioDiv.nextSibling);
+        } else {
+            document.body.appendChild(nyanDiv);
+        }
+    }
 });
 
 function createConfetti(isReverse = false) {
