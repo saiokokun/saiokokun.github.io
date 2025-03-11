@@ -152,6 +152,25 @@ garbgleText.addEventListener('mouseleave', () => {
 const audio = new Audio('https://www.nyan.cat/music/paddy.mp3');
 audio.loop = true;
 
+// Replace the old audio interaction code with this new button handler
+const catMusicBtn = document.querySelector('.cat-music-btn');
+if (catMusicBtn) {
+    catMusicBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play()
+                .then(() => {
+                    catMusicBtn.classList.add('playing');
+                    catMusicBtn.querySelector('.music-text').textContent = 'Nyaning!';
+                })
+                .catch(e => console.log("Audio playback failed:", e));
+        } else {
+            audio.pause();
+            catMusicBtn.classList.remove('playing');
+            catMusicBtn.querySelector('.music-text').textContent = 'Play Nyan!';
+        }
+    });
+}
+
 // BRAINROT JS MADNESS
 setInterval(() => {
     document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;

@@ -437,3 +437,43 @@ body {
     color: crimson;
     animation: glitch 0.5s infinite;
 }
+
+/* Cat Music Button Styles */
+.cat-music-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(145deg, #808080, #606060);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    margin: 20px 0;
+}
+
+.cat-music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.cat-music-btn .cat-emoji {
+    font-size: 1.5em;
+    animation: bounce 2s infinite;
+}
+
+.cat-music-btn.playing {
+    background: linear-gradient(145deg, #ff69b4, #ff1493);
+    animation: rainbow-bg 2s linear infinite;
+}
+
+@keyframes rainbow-bg {
+    0% { background: linear-gradient(145deg, #ff69b4, #ff1493); }
+    33% { background: linear-gradient(145deg, #00ff00, #008000); }
+    66% { background: linear-gradient(145deg, #00ffff, #008080); }
+    100% { background: linear-gradient(145deg, #ff69b4, #ff1493); }
+}
