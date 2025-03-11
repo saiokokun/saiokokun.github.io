@@ -439,55 +439,54 @@ body {
     animation: glitch 0.5s infinite;
 }
 
-/* Cat Music Button Styles - Restore original styling */
+/* Override any spinning animations */
+*, *::before, *::after {
+    animation: none !important;
+}
+
+/* Cat Music Button - Simple Square Style */
 .cat-music-btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    background: linear-gradient(145deg, #ff69b4, #ff1493);
+    gap: 5px;
+    padding: 5px 10px;
+    background: #ff69b4;
     border: none;
-    border-radius: 25px;
+    border-radius: 3px;
     color: white;
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(255,105,180,0.5);
+    transition: transform 0.3s ease;
     margin: 20px 0;
 }
 
 .cat-music-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255,105,180,0.8);
+    transform: scale(1.05);
 }
 
 .cat-music-btn .cat-emoji {
-    font-size: 1.5em;
-    animation: bounce 2s infinite;
+    font-size: 1.2em;
 }
 
 .cat-music-btn.playing {
-    background: linear-gradient(145deg, #ff1493, #ff69b4);
-    animation: rainbow-bg 2s linear infinite;
+    background: #ff1493;
 }
 
-/* Remove any global spinning animations */
-body, div, button {
-    animation: none !important;
-}
-
-/* Keep specific animations that we want */
+/* Keep only specific wanted animations */
 .cube {
     animation: rotate 6s infinite linear !important;
 }
 
-.cat-music-btn .cat-emoji {
-    animation: bounce 2s infinite !important;
+/* Remove the rainbow-bg animation from playing state */
+.cat-music-btn.playing {
+    background: #ff1493 !important;
+    animation: none !important;
 }
 
-.cat-music-btn.playing {
-    animation: rainbow-bg 2s linear infinite !important;
+/* Remove any bounce animations */
+.cat-music-btn .cat-emoji {
+    animation: none !important;
 }
 
 /* COMPLETELY RANDOM STUFF INCOMING */
