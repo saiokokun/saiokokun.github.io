@@ -8,6 +8,8 @@ body {
     font-family: 'Comic Sans MS', cursive, sans-serif;
     text-align: center;
     overflow: hidden;
+    background-image: linear-gradient(rgba(13, 13, 13, 0.97), rgba(13, 13, 13, 0.97)), 
+                      url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z' fill='%230ff' fill-opacity='0.05'/%3E%3C/svg%3E");
 }
 
 /* Fixes: Added top margin to push everything down */
@@ -15,41 +17,36 @@ body {
     margin-top: 80px;
 }*/
 
-/* Profile Picture Styling - No Round Edges */
+/* Profile Picture Styling - Natural size */
 .profile img {
-    width: auto; /* Keep the original size */
+    width: auto;
     height: auto;
-    max-width: 150px; /* Keep it reasonable */
+    max-width: 300px;
     display: block;
-    margin: 0 auto 20px; /* Centered with spacing */
-    box-shadow: 0 0 20px #0ff; /* Optional glow */
+    margin: 0 auto 20px;
+    box-shadow: 0 0 20px #0ff;
 }
 
-/* Glitch Effect */
+/* Updated Glitch Effect with paw prints */
 .glitch {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
     position: relative;
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: #0ff;
-    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00ffff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
     animation: glitch 1.5s infinite alternate;
     margin-bottom: 20px;
 }
 
-.glitch::before, .glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0.8;
-}
-
 .glitch::before {
+    content: "🐾 " attr(data-text) " 🐾";
     color: #f0f;
     transform: translate(-2px, -2px);
     clip-path: inset(20% 0 30% 0);
 }
 
 .glitch::after {
+    content: "🐾 " attr(data-text) " 🐾";
     color: #0ff;
     transform: translate(2px, 2px);
     clip-path: inset(40% 0 10% 0);
@@ -101,14 +98,7 @@ body {
     100% { transform: rotateX(380deg) rotateY(380deg); }
 }
 
-/* Cyber Buttons */
-.links {
-    display: flex;
-    justify-content: center;
-    gap: 15px; /* Spacing between buttons */
-    margin-top: 20px; /* Push buttons down */
-}
-
+/* Updated Cyber Buttons with paw hover effect */
 .neon-btn {
     display: inline-block;
     padding: 10px 20px;
@@ -121,10 +111,15 @@ body {
     box-shadow: 0 0 10px #0ff;
     position: relative;
     overflow: hidden;
+    border-radius: 5px;
 }
 
 .neon-btn:hover {
     background-color: #0ff;
     color: #000;
     box-shadow: 0 0 20px #00ffff;
+}
+
+.neon-btn:hover::after {
+    content: " 🐾";
 }
