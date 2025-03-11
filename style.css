@@ -15,9 +15,9 @@ body {
 }
 
 /* Add top margin to push everything down */
-.container {
+/*.container {
     margin-top: 80px; /* Adjust for proper spacing */
-}
+/*}
 
 /* Profile Picture Styling */
 .profile {
