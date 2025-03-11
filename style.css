@@ -1,36 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS:wght@400;700&display=swap');
 
 body {
     margin: 0;
     padding: 0;
     background-color: #0d0d0d;
     color: #0ff;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
     text-align: center;
     overflow: hidden;
 }
 
 /* Fixes: Added top margin to push everything down */
-/**.container {
-    margin-top: 50px;
+/*.container {
+    margin-top: 80px;
 }*/
 
-/* Profile Picture Styling */
-.profile {
-    margin-bottom: 20px; /* Add spacing between profile and cube */
-}
-
+/* Profile Picture Styling - No Round Edges */
 .profile img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    box-shadow: 0 0 20px #0ff;
-    animation: glow-pulse 2s infinite alternate;
+    width: auto; /* Keep the original size */
+    height: auto;
+    max-width: 150px; /* Keep it reasonable */
+    display: block;
+    margin: 0 auto 20px; /* Centered with spacing */
+    box-shadow: 0 0 20px #0ff; /* Optional glow */
 }
 
-@keyframes glow-pulse {
-    0% { box-shadow: 0 0 10px #0ff; }
-    100% { box-shadow: 0 0 30px #00ffff; }
+/* Glitch Effect */
+.glitch {
+    position: relative;
+    font-size: 3rem;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00ffff;
+    animation: glitch 1.5s infinite alternate;
+    margin-bottom: 20px;
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.8;
+}
+
+.glitch::before {
+    color: #f0f;
+    transform: translate(-2px, -2px);
+    clip-path: inset(20% 0 30% 0);
+}
+
+.glitch::after {
+    color: #0ff;
+    transform: translate(2px, 2px);
+    clip-path: inset(40% 0 10% 0);
+}
+
+@keyframes glitch {
+    0% { transform: skew(2deg); }
+    100% { transform: skew(-2deg); }
 }
 
 /* Cube Styles */
@@ -38,7 +65,7 @@ body {
     perspective: 600px;
     display: flex;
     justify-content: center;
-    margin: 40px auto; /* Space below cube */
+    margin: 40px auto;
 }
 
 .cube {
