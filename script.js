@@ -18,19 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
     // Play audio on ANY interaction
     let hasPlayed = false;
     const playAudio = () => {
-        // Remove this automatic audio play functionality
-        // if (!hasPlayed) {
-        //     audio.play().then(() => {
-        //         hasPlayed = true;
-        //         console.log("🎵 Music started!");
-        //     }).catch(e => console.log("Audio playback failed:", e));
-        // }
+        if (!hasPlayed) {
+            const audio = new Audio('https://www.nyan.cat/music/paddy.mp3');
+            audio.loop = true;
+            audio.volume = 0.5;
+            audio.play().catch(e => console.error("Audio play failed:", e));
+            hasPlayed = true;
+        }
     };
-
-    // Listen for ANY interaction - keep these but they won't auto-play audio now
-    ['click', 'touchstart', 'scroll', 'keypress', 'mousemove'].forEach(event => {
-        document.addEventListener(event, playAudio, { once: true });
-    });
+    
+    // Add event listeners for audio playback
+    document.addEventListener('click', playAudio);
+    document.addEventListener('keydown', playAudio);
+    document.addEventListener('touchstart', playAudio);
 
     // Existing cube code
     let cube = document.querySelector(".cube");
