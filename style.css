@@ -56,7 +56,6 @@ body {
     100% { transform: skew(-2deg); }
 }
 
-/* Cube Styles */
 .cube-container {
     perspective: 600px;
     display: flex;
