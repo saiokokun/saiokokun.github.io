@@ -477,3 +477,271 @@ body {
     66% { background: linear-gradient(145deg, #00ffff, #008080); }
     100% { background: linear-gradient(145deg, #ff69b4, #ff1493); }
 }
+
+/* COMPLETELY RANDOM STUFF INCOMING */
+.banana-dance {
+  animation: spin-upside-down 3s infinite;
+  background: repeating-radial-gradient(circle, yellow, purple 10%, green 15%);
+  border: 8px dotted magenta;
+  transform-origin: center;
+  box-shadow: 0 0 50px rgba(255, 0, 255, 0.8);
+}
+
+@keyframes spin-upside-down {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(0.5); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+#potato-mode {
+  filter: hue-rotate(90deg) blur(2px) contrast(200%);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.screaming-text {
+  font-size: 4rem !important;
+  color: #FF00FF !important;
+  text-shadow: 
+    3px 3px 0 #00FFFF,
+    -3px -3px 0 #FFFF00,
+    3px -3px 0 #FF00FF,
+    -3px 3px 0 #00FF00 !important;
+  transform: skew(-15deg, 5deg) !important;
+  letter-spacing: -5px !important;
+  font-stretch: ultra-expanded !important;
+}
+
+.wiggle-element {
+  animation: wiggle 0.5s infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px) rotate(-5deg); }
+  75% { transform: translateX(10px) rotate(5deg); }
+}
+
+.rainbow-barf {
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 3em;
+  font-weight: 900;
+  text-transform: uppercase;
+  animation: rainbow-shift 2s linear infinite;
+}
+
+@keyframes rainbow-shift {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.exploding-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.exploding-button:active::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, yellow, orange, red, transparent 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: explode 0.5s forwards;
+}
+
+@keyframes explode {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+#cursed-div {
+  font-family: "Wingdings", "Comic Sans MS", "Papyrus", cursive;
+  mix-blend-mode: difference;
+  filter: invert(100%) sepia(100%) saturate(2000%) hue-rotate(180deg);
+  transform: perspective(500px) rotateY(10deg);
+  animation: jitter 0.1s infinite;
+}
+
+@keyframes jitter {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(2px, 1px) rotate(1deg); }
+  50% { transform: translate(-1px, -2px) rotate(-1deg); }
+  75% { transform: translate(3px, -1px) rotate(2deg); }
+  100% { transform: translate(-2px, 2px) rotate(-2deg); }
+}
+
+.disco-floor {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  gap: 5px;
+}
+
+.disco-tile {
+  aspect-ratio: 1;
+  animation: color-change 0.5s infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes color-change {
+  0% { background-color: red; }
+  25% { background-color: yellow; }
+  50% { background-color: lime; }
+  75% { background-color: cyan; }
+  100% { background-color: magenta; }
+}
+
+#melting-text {
+  position: relative;
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+#melting-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 50%, currentColor 51%);
+  background-size: 100% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: melt 2s ease-in-out infinite;
+}
+
+@keyframes melt {
+  0% { background-position: 0 0; transform: scaleY(1); }
+  50% { background-position: 0 -100%; transform: scaleY(1.5); }
+  100% { background-position: 0 0; transform: scaleY(1); }
+}
+
+.comic-bubble {
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  color: black;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.comic-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  border-width: 20px 0 0 20px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+.glitch-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.glitch-image::before,
+.glitch-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+}
+
+.glitch-image::before {
+  left: 2px;
+  background-color: rgba(255,0,0,0.5);
+  animation: glitch-anim-1 2s infinite linear alternate;
+}
+
+.glitch-image::after {
+  left: -2px;
+  background-color: rgba(0,255,255,0.5);
+  animation: glitch-anim-2 3s infinite linear alternate;
+}
+
+@keyframes glitch-anim-1 {
+  0%, 100% { clip-path: inset(50% 0 30% 0); }
+  20% { clip-path: inset(20% 0 60% 0); }
+  40% { clip-path: inset(70% 0 10% 0); }
+  60% { clip-path: inset(10% 0 70% 0); }
+  80% { clip-path: inset(40% 0 40% 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0%, 100% { clip-path: inset(30% 0 50% 0); }
+  20% { clip-path: inset(60% 0 20% 0); }
+  40% { clip-path: inset(10% 0 70% 0); }
+  60% { clip-path: inset(70% 0 10% 0); }
+  80% { clip-path: inset(40% 0 40% 0); }
+}
+
+.taco-tuesday {
+  transform: rotate(3deg) scale(1.2);
+  background: url('https://media.giphy.com/media/l0MYEqEzwMWFCg8rm/giphy.gif');
+  padding: 30px;
+  border: 10px ridge gold;
+  box-shadow: 0 0 0 5px lime, 0 0 0 10px purple, 0 0 0 15px orange;
+  animation: taco-bounce 1s infinite alternate;
+}
+
+@keyframes taco-bounce {
+  from { transform: rotate(3deg) scale(1.2); }
+  to { transform: rotate(-3deg) scale(1.3); }
+}
+
+#hypno-spiral {
+  width: 200px;
+  height: 200px;
+  background: conic-gradient(
+    from 0deg,
+    red, orange, yellow, green, blue, indigo, violet, red
+  );
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+.upside-down-text {
+  transform: rotate(180deg);
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: -10px;
+}
+
+.marquee-3d {
+  transform: perspective(500px) rotateX(30deg);
+  transform-style: preserve-3d;
+  animation: marquee 10s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  0% { transform: perspective(500px) rotateX(30deg) translateX(100%); }
+  100% { transform: perspective(500px) rotateX(30deg) translateX(-100%); }
+}
+
+/* ABSOLUTELY CURSED SELECTOR */
+div:nth-child(odd):hover > p:not(:first-child)::first-letter,
+.container > *:nth-child(3n+2):hover::after,
+[class*="random"]:not([class*="btn"]):hover ~ div {
+  content: "👁️👄👁️";
+  font-size: 5em;
+  color: fuchsia;
+  text-shadow: 0 0 10px lime;
+  animation: spin 1s infinite;
+}
