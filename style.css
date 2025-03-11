@@ -71,7 +71,7 @@ body {
     position: relative;
     transform-style: preserve-3d;
     transform: rotateX(20deg) rotateY(20deg);
-    animation: rotate 6s infinite linear;
+    animation: rotate 6s infinite linear !important;
 }
 
 .face {
@@ -438,13 +438,13 @@ body {
     animation: glitch 0.5s infinite;
 }
 
-/* Cat Music Button Styles */
+/* Cat Music Button Styles - Restore original styling */
 .cat-music-btn {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     padding: 10px 20px;
-    background: linear-gradient(145deg, #808080, #606060);
+    background: linear-gradient(145deg, #ff69b4, #ff1493);
     border: none;
     border-radius: 25px;
     color: white;
@@ -452,13 +452,13 @@ body {
     font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    box-shadow: 0 0 15px rgba(255,105,180,0.5);
     margin: 20px 0;
 }
 
 .cat-music-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    box-shadow: 0 0 20px rgba(255,105,180,0.8);
 }
 
 .cat-music-btn .cat-emoji {
@@ -467,15 +467,26 @@ body {
 }
 
 .cat-music-btn.playing {
-    background: linear-gradient(145deg, #ff69b4, #ff1493);
+    background: linear-gradient(145deg, #ff1493, #ff69b4);
     animation: rainbow-bg 2s linear infinite;
 }
 
-@keyframes rainbow-bg {
-    0% { background: linear-gradient(145deg, #ff69b4, #ff1493); }
-    33% { background: linear-gradient(145deg, #00ff00, #008000); }
-    66% { background: linear-gradient(145deg, #00ffff, #008080); }
-    100% { background: linear-gradient(145deg, #ff69b4, #ff1493); }
+/* Remove any global spinning animations */
+body, div, button {
+    animation: none !important;
+}
+
+/* Keep specific animations that we want */
+.cube {
+    animation: rotate 6s infinite linear !important;
+}
+
+.cat-music-btn .cat-emoji {
+    animation: bounce 2s infinite !important;
+}
+
+.cat-music-btn.playing {
+    animation: rainbow-bg 2s linear infinite !important;
 }
 
 /* COMPLETELY RANDOM STUFF INCOMING */

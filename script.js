@@ -73,9 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Random link chaos
     const randomLink = document.querySelector('.random-link a');
     if (randomLink) {
-        randomLink.addEventListener('mouseover', () => {
-            randomLink.textContent = ['OwO', 'UwU', '>w<', ':3', '(｡♥‿♥｡)'][Math.floor(Math.random() * 5)];
-        });
         randomLink.addEventListener('mouseleave', () => {
             randomLink.textContent = 'Click here for absolutely no reason';
         });
@@ -150,7 +147,7 @@ garbgleText.addEventListener('mouseleave', () => {
 });
 
 // Add audio player
-const audio = new Audio('https://www.nyan.cat/music/paddy.mp3');
+const audio = new Audio('paddy.mp3');
 audio.loop = true;
 
 // Make sure the cat music button is the ONLY way to play the audio
@@ -162,8 +159,6 @@ if (catMusicBtn) {
                 .then(() => {
                     catMusicBtn.classList.add('playing');
                     catMusicBtn.querySelector('.music-text').textContent = 'Nyaning!';
-                    hasPlayed = true; // Mark as played when button is clicked
-                    console.log("🎵 Music started!");
                 })
                 .catch(e => console.log("Audio playback failed:", e));
         } else {
@@ -175,9 +170,9 @@ if (catMusicBtn) {
 }
 
 // BRAINROT JS MADNESS
-setInterval(() => {
-    document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-}, 5000);
+// setInterval(() => {
+//     document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+// }, 5000);
 
 document.addEventListener('mousemove', (e) => {
     const sparkle = document.createElement('div');
