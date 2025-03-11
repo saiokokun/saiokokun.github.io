@@ -692,3 +692,48 @@ setInterval(() => {
         });
     }
 }, 5000);
+
+// Rainbow trail effect
+document.addEventListener('mousemove', (e) => {
+    const trail = document.createElement('div');
+    trail.className = 'cursor-trail';
+    trail.style.left = e.clientX + 'px';
+    trail.style.top = e.clientY + 'px';
+    trail.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    document.body.appendChild(trail);
+    setTimeout(() => trail.remove(), 1000);
+});
+
+// Random retro cursor on page load
+const retroCursors = [
+    'url("data:image/cur;base64,AAACAAEAICAAAAAAAACoEAAAFgAAA") 2 2, auto', // Default
+    'grab',
+    'crosshair',
+    'wait',
+    'help',
+    'e-resize',
+    'n-resize',
+    'ne-resize',
+    'nw-resize',
+    'pointer',
+    'progress',
+    'text',
+    'wait',
+    'cell',
+    'not-allowed',
+    'all-scroll',
+    'col-resize',
+    'row-resize',
+    'no-drop',
+    'vertical-text',
+    'alias',
+    'copy',
+    'move',
+    'zoom-in',
+    'zoom-out'
+];
+
+document.documentElement.style.setProperty(
+    '--custom-cursor', 
+    retroCursors[Math.floor(Math.random() * retroCursors.length)]
+);

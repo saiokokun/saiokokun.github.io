@@ -7,6 +7,7 @@ body {
     color: #0ff;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     text-align: center;
+    cursor: var(--custom-cursor);
    
     background-image: linear-gradient(rgba(13, 13, 13, 0.97), rgba(13, 13, 13, 0.97)), 
                       url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z' fill='%230ff' fill-opacity='0.05'/%3E%3C/svg%3E");
@@ -783,4 +784,27 @@ div:nth-child(odd):hover > p:not(:first-child)::first-letter,
   color: fuchsia;
   text-shadow: 0 0 10px lime;
   animation: spin 1s infinite;
+}
+
+/* Cursor trail effect */
+.cursor-trail {
+    position: fixed;
+    pointer-events: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    z-index: 9999;
+    animation: fade-out 1s linear forwards;
+}
+
+@keyframes fade-out {
+    0% { 
+        transform: scale(1) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% { 
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+    }
 }
