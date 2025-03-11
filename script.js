@@ -151,3 +151,52 @@ garbgleText.addEventListener('mouseleave', () => {
 // Add audio player
 const audio = new Audio('https://www.nyan.cat/music/paddy.mp3');
 audio.loop = true;
+
+// BRAINROT JS MADNESS
+setInterval(() => {
+    document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+}, 5000);
+
+document.addEventListener('mousemove', (e) => {
+    const sparkle = document.createElement('div');
+    sparkle.style.position = 'absolute';
+    sparkle.style.left = `${e.pageX}px`;
+    sparkle.style.top = `${e.pageY}px`;
+    sparkle.style.width = '10px';
+    sparkle.style.height = '10px';
+    sparkle.style.background = 'gold';
+    sparkle.style.borderRadius = '50%';
+    sparkle.style.animation = 'fall 1s linear';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 1000);
+});
+
+setInterval(() => {
+    alert('BOO! DID I SCARE YOU?');
+}, 30000);
+
+const spinnyBtn = document.querySelector('.spinny-btn');
+if (spinnyBtn) {
+    spinnyBtn.addEventListener('click', () => {
+        document.body.style.transform = `rotate(${Math.random() * 360}deg)`;
+        setTimeout(() => document.body.style.transform = '', 1000);
+    });
+}
+
+setInterval(() => {
+    const randomText = document.createElement('p');
+    randomText.textContent = ['BLOOP', 'BLARP', 'WHEEEEE', 'YOLO', 'SWAG'][Math.floor(Math.random() * 5)];
+    randomText.style.position = 'fixed';
+    randomText.style.left = `${Math.random() * 100}vw`;
+    randomText.style.top = `${Math.random() * 100}vh`;
+    randomText.style.color = 'white';
+    randomText.style.fontSize = '2rem';
+    document.body.appendChild(randomText);
+    setTimeout(() => randomText.remove(), 2000);
+}, 1000);
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'p') {
+        document.body.innerHTML += '<h1 style="color: purple;">PPPPPPPPPPPPPPPPPP</h1>';
+    }
+});

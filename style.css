@@ -366,3 +366,74 @@ body {
     font-size: 1rem;
     line-height: 1.6;
 }
+
+/* CHAOS STYLING INCOMING */
+.yeehaw-zone {
+    border: 5px dashed yellow;
+    background: url('https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif') repeat;
+    padding: 20px;
+    animation: spin 5s infinite linear;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.pickle-rick {
+    background-color: limegreen;
+    transform: skew(20deg);
+    padding: 15px;
+    box-shadow: 0 0 30px greenyellow;
+}
+
+.shrek-vibes {
+    background: radial-gradient(circle, green, darkgreen);
+    color: white;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding: 25px;
+    border: 3px solid brown;
+}
+
+.random-thoughts {
+    font-family: 'Wingdings', sans-serif;
+    color: purple;
+    text-shadow: 0 0 10px orange;
+    animation: bounce 2s infinite;
+}
+
+.ascii-art pre {
+    font-size: 2rem;
+    color: hotpink;
+    text-align: left;
+    background: black;
+    padding: 10px;
+    display: inline-block;
+}
+
+.weird-buttons button {
+    margin: 10px;
+    padding: 15px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, red, blue);
+    color: white;
+    font-size: 1.2rem;
+}
+
+.spinny-btn {
+    animation: spin 1s infinite linear;
+}
+
+.meme-gallery img {
+    width: 200px;
+    border: 5px solid gold;
+    transform: rotate(-10deg);
+    margin: 10px;
+}
+
+.meme-gallery p {
+    font-size: 2rem;
+    color: crimson;
+    animation: glitch 0.5s infinite;
+}
