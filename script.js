@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // CountAPI visitor counter
     const counter = document.getElementById('visitor-count');
-    fetch('https://api.countapi.xyz/hit/yourusername.github.io/saioko-cyber-den')
+    fetch('https://api.countapi.xyz/hit/saiokokun.github.io/saioko-cyber-den')
         .then(response => response.json())
         .then(data => {
             counter.innerHTML = `<font face="Comic Sans MS" color="#FF1493">Ur visitor #${data.value}!!</font>`;
@@ -32,10 +32,19 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(() => {
         if (Math.random() < 0.15) {
             const messages = [
-                'WELCOME 2 MY GLITTER DEN!!',
-                'TACOS R LIFE ~*~ SPARKLE ON!!',
-                'ALIENS R MY BFFs!!',
-                '90S CURSOR VIBES 4EVER!!'
+                'WELCOME !!',
+                'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH',
+                'ITS UNDER MY SKIN',
+                'WOAH ANNOYING POPUP',
+                'did you know that everything is depreciated?',
+                'OMG U HAVE A VIRUS!!1!',
+                '*~*~* SPARKLE TIME *~*~*',
+                'ur computer is now mine >:3',
+                'DOWNLOADING MORE RAM...',
+                'ERROR 418: I\'M A TEAPOT',
+                'WINDOWS 95 IS CALLING',
+                'PRESS ALT+F4 FOR FREE PIZZA'
+                
             ];
             alert(messages[Math.floor(Math.random() * messages.length)]);
         }
@@ -154,5 +163,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Console spam with 90s flair
-    console.log('%c SAIOKOS CYBER DEN: 90S PASTEL EDITION!!', 'background: #FF69B4; color: #FFFF00; font-size: 18px; padding: 5px; text-shadow: 2px 2px #000000;');
+    console.log('%c SAIOKOS CYBER DEN: WOAH PLZ HIRE ME!!', 'background: #FF69B4; color: #FFFF00; font-size: 18px; padding: 5px; text-shadow: 2px 2px #000000;');
 });
