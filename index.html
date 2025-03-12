@@ -1,10 +1,133 @@
-Possibility: GitHub Pages is static-only, so a true visitor counter requires an external service. You can use:
-Third-Party APIs: Services like HitCounter or CountAPI provide free, simple counters. Example with CountAPI:
-javascript
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>🌌 Saioko’s Cosmic Cyber Den 🌌</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <link rel="stylesheet" href="style.css">
+    <meta name="keywords" content="saioko, 90s, cyber, chaos, glitter, rad, netscape, myspace">
+    <meta name="description" content="Blast off into Saioko’s wild web world! Totally tubular since 1998!">
+    <!-- 90s Cursor Effects Script -->
+    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+</head>
+<body text="#000000" link="#800080" vlink="#FF00FF" alink="#FFFF00">
 
-fetch('https://api.countapi.xyz/hit/yourusername.github.io/saioko-cyber-den')
-    .then(response => response.json())
-    .then(data => {
-        counter.innerHTML = `<font face="Comic Sans MS" color="#FF1493">Ur visitor #${data.value}!!</font>`;
-    });
+<!-- Windows 95 Window Header -->
+<div class="window window-header">
+    <div class="window-titlebar">
+        <span class="window-title">🌌 Saioko’s Cosmic Cyber Den ~*~ Netscape Pastel Edition 🌌</span>
+        <span class="window-buttons">
+            <button class="window-button">_</button>
+            <button class="window-button">□</button>
+            <button class="window-button">X</button>
+        </span>
+    </div>
+    <div class="window-content">
+        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZm9sbzhzMXdzb3hsczNmZTNlbHppY2Y3ZmJ5aDJqb25jeGhtbGM5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/anjRJ4nv9WJzO/giphy.gif" alt="spinning planet" width="80" class="pixelated">
+        <marquee scrollamount="12" bgcolor="#FF69B4">
+            <font face="Comic Sans MS" color="#FFFF00">~*~ ENTER THE GLITTER VOID ~*~ RADICAL ZONE ~*~</font>
+        </marquee>
+    </div>
+</div>
 
+<!-- Main content in a window -->
+<div class="window main-content">
+    <div class="window-titlebar">
+        <span class="window-title">About Me!!</span>
+    </div>
+    <div class="window-content">
+        <font face="Comic Sans MS" size="4" color="#9400D3">~*~ HIII EARTHLING! ~*~</font>
+        <br>
+        <img src="https://discord.c99.nl/widget/theme-3/70583819811430400.png" alt="Saioko’s Avatar" width="100" class="pixelated">
+        <p><font face="Comic Sans MS" color="#000000">Yo! I’m @saiokokun, ur cosmic guide 2 this pastel cyber mess! Buckle up!!</font></p>
+        <font face="Comic Sans MS" size="2">
+            <a href="https://discord.com/users/70583819811430400">Discord!!</a> | 
+            <a href="https://github.com/saiokokun">GitHub!!</a>
+        </font>
+        <hr>
+        <font face="Comic Sans MS" size="3" color="#00CED1">🎵 MY SPACE JAMZ 🎵</font>
+        <br>
+        <embed src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" width="200" height="60" autostart="true" loop="true">
+        <br>
+        <embed src="https://www.nyan.cat/music/paddy.mp3" width="200" height="60" autostart="true" loop="true">
+        <p><font face="Comic Sans MS" color="#FF1493">Crank it UP, these beats are COSMIC!!</font></p>
+    </div>
+</div>
+
+<!-- Chaos windows -->
+<div class="window chaos-window">
+    <div class="window-titlebar">
+        <span class="window-title">👽 Alien Alert!!</span>
+    </div>
+    <div class="window-content">
+        <font face="Comic Sans MS" size="4" color="#32CD32">👽 ALIEN INVASION!! 👽</font>
+        <br>
+        <img src="https://media.giphy.com/media/l0MYEqEzwMWFCg8rm/giphy.gif" alt="alien taco" width="100" class="pixelated">
+        <p><font face="Comic Sans MS" color="#FF4500">Taco Aliens R HERE! Eat or B eaten!!</font></p>
+        <input type="button" value="EAT TACO!!" onclick="alert('NOM NOM NOM!!')">
+    </div>
+</div>
+
+<div class="window chaos-window">
+    <div class="window-titlebar">
+        <span class="window-title">💾 Floppy Vibes 💾</span>
+    </div>
+    <div class="window-content">
+        <font face="Comic Sans MS" size="4" color="#FFD700">💾 FLOPPY MADNESS!! 💾</font>
+        <br>
+        <img src="https://media.giphy.com/media/1yjLt5xVXNkGu84ORt/giphy.gif" alt="floppy dance" width="100" class="pixelated">
+        <p><font face="Comic Sans MS" color="#FF00FF">Save ur soul on 1.44MB of CHAOS!!</font></p>
+        <input type="button" value="SAVE ME!!" onclick="alert('ERROR: DISK FULL!!')">
+    </div>
+</div>
+
+<!-- GIF parade -->
+<div class="window gif-window">
+    <div class="window-titlebar">
+        <span class="window-title">GIF-O-TRON 9000</span>
+    </div>
+    <div class="window-content">
+        <font face="Comic Sans MS" size="4" color="#FF69B4">🌠 GIF-O-TRON 9000 🌠</font>
+        <br>
+        <img src="https://picsum.photos/200/300" alt="cowboy" width="80" class="pixelated">
+        <img src="https://picsum.photos/200/302" alt="shrek" width="80" class="pixelated">
+        <img src="https://picsum.photos/200/301" alt="nyan" width="80" class="pixelated">
+        <marquee scrollamount="15" direction="right" bgcolor="#87CEEB">
+            <font face="Comic Sans MS" color="#FF00FF">~*~ WHEEEEEEEEEEEEEEEEE ~*~</font>
+        </marquee>
+    </div>
+</div>
+
+<!-- ASCII and counter -->
+<div class="window ascii-window">
+    <div class="window-titlebar">
+        <span class="window-title">Cyber Stats</span>
+    </div>
+    <div class="window-content">
+        <font face="Comic Sans MS" size="4" color="#9400D3">🖥️ ASCII BLAST 🖥️</font>
+        <pre style="color: #FFFF00; background: #FF00FF; font-family: 'Fixedsys', monospace;">
+       .-""""""""-.
+     .'          '.
+    /   SAIOKO    \
+   : ,          , :
+    `._         _.' 
+       `"'"""""'"` 
+        </pre>
+        <p><font face="Comic Sans MS" color="#00FFFF">Beep boop, I’m a glitter gremlin!!</font></p>
+        <hr>
+        <font face="Comic Sans MS" size="4" color="#32CD32">👾 VISITOR COUNT 👾</font>
+        <br>
+        <p id="visitor-count"><font face="Comic Sans MS" color="#FF1493">Ur visitor #1337!!</font></p>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <font face="Comic Sans MS" size="3" color="#FFFF00">🌟 Built w/ Netscape Pastel & MySpace Vibes 🌟</font>
+    <br>
+    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXIzNTNqZXppZjN6NnFydjEycmdqajZxMWJ1dHo0bmwxMmxwcGJraiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/DUI1ivNNmZel6JkdVS/giphy.gif" alt="under construction" width="80" class="pixelated">
+    <p><font face="Comic Sans MS" color="#FF00FF">Last updated: When I feel sparkly!!</font></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
