@@ -54,57 +54,60 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Scatter windows across full screen without overlap
-    const windows = document.querySelectorAll('.window');
-    const placedPositions = []; // Track occupied areas
-    const padding = 20; // Buffer from edges
-    const viewportWidth = window.innerWidth - padding * 2;
-    const viewportHeight = window.innerHeight - padding * 2;
+    // Wait for the window to fully load before scattering
+    window.onload = function() {
+        // Scatter windows across full screen without overlap
+        const windows = document.querySelectorAll('.window');
+        const placedPositions = []; // Track occupied areas
+        const padding = 20; // Buffer from edges
+        const viewportWidth = window.innerWidth - padding * 2;
+        const viewportHeight = window.innerHeight - padding * 2;
 
-    windows.forEach((win, index) => {
-        const winWidth = win.offsetWidth || 400; // Default to 400px if not yet rendered
-        const winHeight = win.offsetHeight || 200; // Estimate height (adjust if needed)
+        windows.forEach((win, index) => {
+            const winWidth = win.offsetWidth || 400; // Default to 400px if not yet rendered
+            const winHeight = win.offsetHeight || 200; // Estimate height (adjust if needed)
 
-        let positionFound = false;
-        let attempts = 0;
-        const maxAttempts = 50; // Prevent infinite loops
+            let positionFound = false;
+            let attempts = 0;
+            const maxAttempts = 50; // Prevent infinite loops
 
-        while (!positionFound && attempts < maxAttempts) {
-            const randomLeft = padding + Math.random() * (viewportWidth - winWidth);
-            const randomTop = padding + Math.random() * (viewportHeight - winHeight);
+            while (!positionFound && attempts < maxAttempts) {
+                const randomLeft = padding + Math.random() * (viewportWidth - winWidth);
+                const randomTop = padding + Math.random() * (viewportHeight - winHeight);
 
-            // Check for overlap with already placed windows
-            const overlaps = placedPositions.some(pos => {
-                return (
-                    randomLeft < pos.right &&
-                    randomLeft + winWidth > pos.left &&
-                    randomTop < pos.bottom &&
-                    randomTop + winHeight > pos.top
-                );
-            });
-
-            if (!overlaps) {
-                win.style.left = `${randomLeft}px`;
-                win.style.top = `${randomTop}px`;
-                win.style.zIndex = index;
-                placedPositions.push({
-                    left: randomLeft,
-                    top: randomTop,
-                    right: randomLeft + winWidth,
-                    bottom: randomTop + winHeight
+                // Check for overlap with already placed windows
+                const overlaps = placedPositions.some(pos => {
+                    return (
+                        randomLeft < pos.right &&
+                        randomLeft + winWidth > pos.left &&
+                        randomTop < pos.bottom &&
+                        randomTop + winHeight > pos.top
+                    );
                 });
-                positionFound = true;
-            }
-            attempts++;
-        }
 
-        // Fallback: If no position found, stack slightly offset
-        if (!positionFound) {
-            win.style.left = `${padding + index * 50}px`;
-            win.style.top = `${padding + index * 50}px`;
-            win.style.zIndex = index;
-        }
-    });
+                if (!overlaps) {
+                    win.style.left = `${randomLeft}px`;
+                    win.style.top = `${randomTop}px`;
+                    win.style.zIndex = index;
+                    placedPositions.push({
+                        left: randomLeft,
+                        top: randomTop,
+                        right: randomLeft + winWidth,
+                        bottom: randomTop + winHeight
+                    });
+                    positionFound = true;
+                }
+                attempts++;
+            }
+
+            // Fallback: If no position found, stack slightly offset
+            if (!positionFound) {
+                win.style.left = `${padding + index * 50}px`;
+                win.style.top = `${padding + index * 50}px`;
+                win.style.zIndex = index;
+            }
+        });
+    };
 
     // Console spam with 90s flair
     console.log('%c SAIOKO’S CYBER DEN: 90S PASTEL EDITION!!', 'background: #FF69B4; color: #FFFF00; font-size: 18px; padding: 5px; text-shadow: 2px 2px #000000;');
