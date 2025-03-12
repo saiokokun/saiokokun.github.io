@@ -19,7 +19,7 @@ body {
     border: 2px outset #FFD700; /* Gold bevel */
     box-shadow: inset -1px -1px #FF00FF, inset 1px 1px #00FFFF; /* Neon shadow */
     width: 400px;
-    position: absolute; /* Back to scattered layout */
+    position: absolute; /* Scattered layout */
 }
 
 .window-header {

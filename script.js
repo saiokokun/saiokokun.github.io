@@ -12,10 +12,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const randomEffect = cursorEffects[Math.floor(Math.random() * cursorEffects.length)];
     randomEffect();
 
-    // Random visitor counter (static for now)
-    let visitorCount = 1337 + Math.floor(Math.random() * 1000); // Random start for demo
+    // CountAPI visitor counter
     const counter = document.getElementById('visitor-count');
-    counter.innerHTML = `<font face="Comic Sans MS" color="#FF1493">Ur visitor #${visitorCount}!!</font>`;
+    fetch('https://api.countapi.xyz/hit/saiokokun.github.io/saioko-cyber-den')
+        .then(response => response.json())
+        .then(data => {
+            counter.innerHTML = `<font face="Comic Sans MS" color="#FF1493">Ur visitor #${data.value}!!</font>`;
+        })
+        .catch(error => {
+            console.error('Error fetching visitor count:', error);
+            counter.innerHTML = `<font face="Comic Sans MS" color="#FF1493">Ur visitor #???!!</font>`;
+        });
 
     // Random alert chaos with MySpace energy
     setInterval(() => {
