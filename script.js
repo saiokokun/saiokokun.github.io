@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // CountAPI visitor counter
     const counter = document.getElementById('visitor-count');
-    fetch('https://api.countapi.xyz/hit/saiokokun.github.io/saioko-cyber-den')
+    fetch('https://api.countapi.xyz/hit/yourusername.github.io/saioko-cyber-den')
         .then(response => response.json())
         .then(data => {
             counter.innerHTML = `<font face="Comic Sans MS" color="#FF1493">Ur visitor #${data.value}!!</font>`;
@@ -54,16 +54,56 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Scatter windows randomly with slight variation
+    // Scatter windows across full screen without overlap
     const windows = document.querySelectorAll('.window');
+    const placedPositions = []; // Track occupied areas
+    const padding = 20; // Buffer from edges
+    const viewportWidth = window.innerWidth - padding * 2;
+    const viewportHeight = window.innerHeight - padding * 2;
+
     windows.forEach((win, index) => {
-        const baseTop = index * 50; // Base offset to avoid extreme overlap
-        const baseLeft = index * 50;
-        const randomTop = baseTop + Math.random() * 200 - 100; // ±100px variation
-        const randomLeft = baseLeft + Math.random() * 300 - 150; // ±150px variation
-        win.style.top = `${Math.max(20, randomTop)}px`; // Ensure not too high
-        win.style.left = `${Math.max(20, randomLeft)}px`; // Ensure not too left
-        win.style.zIndex = index; // Layering order
+        const winWidth = win.offsetWidth || 400; // Default to 400px if not yet rendered
+        const winHeight = win.offsetHeight || 200; // Estimate height (adjust if needed)
+
+        let positionFound = false;
+        let attempts = 0;
+        const maxAttempts = 50; // Prevent infinite loops
+
+        while (!positionFound && attempts < maxAttempts) {
+            const randomLeft = padding + Math.random() * (viewportWidth - winWidth);
+            const randomTop = padding + Math.random() * (viewportHeight - winHeight);
+
+            // Check for overlap with already placed windows
+            const overlaps = placedPositions.some(pos => {
+                return (
+                    randomLeft < pos.right &&
+                    randomLeft + winWidth > pos.left &&
+                    randomTop < pos.bottom &&
+                    randomTop + winHeight > pos.top
+                );
+            });
+
+            if (!overlaps) {
+                win.style.left = `${randomLeft}px`;
+                win.style.top = `${randomTop}px`;
+                win.style.zIndex = index;
+                placedPositions.push({
+                    left: randomLeft,
+                    top: randomTop,
+                    right: randomLeft + winWidth,
+                    bottom: randomTop + winHeight
+                });
+                positionFound = true;
+            }
+            attempts++;
+        }
+
+        // Fallback: If no position found, stack slightly offset
+        if (!positionFound) {
+            win.style.left = `${padding + index * 50}px`;
+            win.style.top = `${padding + index * 50}px`;
+            win.style.zIndex = index;
+        }
     });
 
     // Console spam with 90s flair
