@@ -106,8 +106,35 @@ document.addEventListener("DOMContentLoaded", function () {
                 win.style.top = `${padding + index * 50}px`;
                 win.style.zIndex = index;
             }
+
+            // Make the window draggable
+            makeWindowDraggable(win);
         });
     };
+
+    // Function to make windows draggable
+    function makeWindowDraggable(window) {
+        const header = window.querySelector('.window-titlebar');
+        let offsetX, offsetY;
+
+        header.addEventListener('mousedown', (e) => {
+            offsetX = e.clientX - window.getBoundingClientRect().left;
+            offsetY = e.clientY - window.getBoundingClientRect().top;
+
+            const moveWindow = (moveEvent) => {
+                window.style.left = `${moveEvent.clientX - offsetX}px`;
+                window.style.top = `${moveEvent.clientY - offsetY}px`;
+            };
+
+            const stopMoving = () => {
+                document.removeEventListener('mousemove', moveWindow);
+                document.removeEventListener('mouseup', stopMoving);
+            };
+
+            document.addEventListener('mousemove', moveWindow);
+            document.addEventListener('mouseup', stopMoving);
+        });
+    }
 
     // Console spam with 90s flair
     console.log('%c SAIOKO’S CYBER DEN: 90S PASTEL EDITION!!', 'background: #FF69B4; color: #FFFF00; font-size: 18px; padding: 5px; text-shadow: 2px 2px #000000;');
