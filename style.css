@@ -2,17 +2,17 @@
 body {
     margin: 0;
     padding: 20px;
-    background-color: rgb(255, 182, 193); /* Pastel pink base */
+    background-color: hsl(350, 100%, 85%); /* Using HSL for better hue rotation */
     font-family: 'Comic Sans MS', 'MS Sans Serif', sans-serif;
     text-align: center;
     min-height: 100vh;
-    animation: hueShift 10s infinite alternate; /* Slow hue shift */
+    animation: hueShift 20s infinite linear; /* Made it linear and slower */
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 @keyframes hueShift {
     0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(60deg); } /* Subtle shift for pastel vibes */
+    100% { filter: hue-rotate(360deg); } /* Full rotation for more variety */
 }
 
 .window {

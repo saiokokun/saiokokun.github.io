@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Random initial hue on page load
+    const randomHue = Math.floor(Math.random() * 360);
+    document.body.style.backgroundColor = `hsl(${randomHue}, 100%, 85%)`;
+
     // List of available cursor effects
     const cursorEffects = [
         () => new cursoreffects.fairyDustCursor({ colors: ["#FF00FF", "#00FFFF", "#FFFF00"] }),
@@ -114,28 +118,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to make windows draggable
     function makeWindowDraggable(window) {
-        const header = window.querySelector('.window-titlebar');
-        let offsetX, offsetY;
+        const titleBar = window.querySelector('.window-titlebar');
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
 
-        header.addEventListener('mousedown', (e) => {
-            offsetX = e.clientX - window.getBoundingClientRect().left;
-            offsetY = e.clientY - window.getBoundingClientRect().top;
-
-            const moveWindow = (moveEvent) => {
-                window.style.left = `${moveEvent.clientX - offsetX}px`;
-                window.style.top = `${moveEvent.clientY - offsetY}px`;
-            };
-
-            const stopMoving = () => {
-                document.removeEventListener('mousemove', moveWindow);
-                document.removeEventListener('mouseup', stopMoving);
-            };
-
-            document.addEventListener('mousemove', moveWindow);
-            document.addEventListener('mouseup', stopMoving);
+        titleBar.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            initialX = e.clientX - window.offsetLeft;
+            initialY = e.clientY - window.offsetTop;
+            
+            titleBar.style.cursor = 'grabbing';
         });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+
+            e.preventDefault();
+            currentX = e.clientX - initialX;
+            currentY = e.clientY - initialY;
+
+            window.style.left = `${currentX}px`;
+            window.style.top = `${currentY}px`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            titleBar.style.cursor = 'grab';
+        });
+
+        // Set initial cursor style
+        titleBar.style.cursor = 'grab';
     }
 
     // Console spam with 90s flair
-    console.log('%c SAIOKO’S CYBER DEN: 90S PASTEL EDITION!!', 'background: #FF69B4; color: #FFFF00; font-size: 18px; padding: 5px; text-shadow: 2px 2px #000000;');
+    console.log('%c SAIOKOS CYBER DEN: 90S PASTEL EDITION!!', 'background: #FF69B4; color: #FFFF00; font-size: 18px; padding: 5px; text-shadow: 2px 2px #000000;');
 });
